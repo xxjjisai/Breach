@@ -7,12 +7,16 @@ _G.include =
     };
 
     -- 全局配置
-    globalcfg = {
-        'AssetsFontCfg',
-        'AssetsTextureCfg',
-        'AssetsVoiceCfg',
+    globalcfg = { 
         'ActorCfg',
         'SystemCfg',
+    };
+
+    -- 资源配置
+    assestscfg = {
+        'AssetsFontCfg',
+        'AssetsTextureCfg',
+        'AssetsVoiceCfg', 
     };
 
     -- 基类

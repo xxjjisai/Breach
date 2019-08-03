@@ -25,6 +25,10 @@ function love.load()
     for _,cfg in ipairs(cfgs) do 
         require("configs/globals/"..cfg);
     end
+    local cfgs = include.assestscfg;
+    for _,cfg in ipairs(cfgs) do 
+        require("configs/assests/"..cfg);
+    end
     local bases = include.bases;
     for _,cls in ipairs(bases) do 
         require("codes/bases/"..cls);
