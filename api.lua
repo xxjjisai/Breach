@@ -13,7 +13,7 @@
                 ["Color"] = {color={1,1,0,1}}; -- 颜色
                 ["Rectangle"] = {filltype="fill"}; -- 矩形
                 ["Speed"] = {speed=200}; -- 速度
-                ["SortOrder"] = {}; -- 渲染层级（暂时没用到）
+                ["SortOrder"] = {nLayerIndex=option.tbLayer.human}; -- 渲染层级
                 ["WASDMove"] = {}; -- 八方向移动
                 ["BumpWorld"] = {bInWorld=false}; -- 物理碰撞
                 ["Animate"] = {nStartFrame=1,nEndFrame=4,bStartPlay=true,sImg="mt_4",nQuadW=32,nQuadH=32,nTotalFrame=16,nLoop=1,nTotalPlayCount=0,nTimeAfterPlay=0.1};
@@ -31,7 +31,7 @@
         ["Color"] = {color={1,1,0,1}}; -- 颜色
         ["Rectangle"] = {filltype="fill"}; -- 矩形
         ["Speed"] = {speed=200}; -- 速度
-        ["SortOrder"] = {}; -- 渲染层级（暂时没用到）
+        ["SortOrder"] = {nLayerIndex=option.tbLayer.human}; -- 渲染层级
         ["WASDMove"] = {}; -- 八方向移动
         ["BumpWorld"] = {bInWorld=false}; -- 物理碰撞
         ["Animate"] = {nStartFrame=1,nEndFrame=4,bStartPlay=true,sImg="mt_4",nQuadW=32,nQuadH=32,nTotalFrame=16,nLoop=1,nTotalPlayCount=0,nTimeAfterPlay=0.1};
