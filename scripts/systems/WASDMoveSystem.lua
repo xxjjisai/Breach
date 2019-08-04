@@ -42,13 +42,13 @@ function WASDMoveSystem:keypressed(actors,key)
     for _,actor in ipairs(actors) do 
         local compo_WASDMove = actor:GetCompo("WASDMove");
         if compo_WASDMove then
-            if key == "w" then 
+            if key == "w" or key == "up" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"up",1);
-            elseif key == "a" then 
+            elseif key == "a" or key == "left" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"left",1);
-            elseif key == "s" then 
+            elseif key == "s" or key == "down" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"down",1);
-            elseif key == "d" then 
+            elseif key == "d" or key == "right" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"right",1);
             end
         end 
@@ -68,13 +68,13 @@ function WASDMoveSystem:keyreleased(actors,key)
     for _,actor in ipairs(actors) do 
         local compo_WASDMove = actor:GetCompo("WASDMove");
         if compo_WASDMove then
-            if key == "w" then 
+            if key == "w" or key == "up" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"up",2);
-            elseif key == "a" then 
+            elseif key == "a" or key == "left" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"left",2);
-            elseif key == "s" then 
+            elseif key == "s" or key == "down" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"down",2);
-            elseif key == "d" then 
+            elseif key == "d" or key == "right" then 
                 Event:DoEvent(self, "EvtPlayerWASDMove", actor,"right",2);
             end
         end
