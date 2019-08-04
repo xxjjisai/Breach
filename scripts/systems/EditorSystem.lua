@@ -225,7 +225,7 @@ function EditorSystem:Create(act)
         actmgr:AddActorInCurStage(actor);
         local bwsys = sysmgr:GetSystem("BumpWorldSystem");
         local compo_BumpWorld = actor:GetCompo("BumpWorld");
-        if compo_BumpWorld then
+        if compo_BumpWorld and bwsys then
             compo_BumpWorld:SetData("bInWorld",false);
             bwsys:AddInWorld(actor);
         end
