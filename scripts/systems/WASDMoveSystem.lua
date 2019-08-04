@@ -1,5 +1,7 @@
 WASDMoveSystem = class("WASDMoveSystem",System)
 
+WASDMoveSystem.tbPress = {};
+
 function WASDMoveSystem:update(dt,actors)
     local actors = actors or {};
     if not next(actors) then
@@ -31,6 +33,8 @@ function WASDMoveSystem:update(dt,actors)
     end
 end
 function WASDMoveSystem:keypressed(actors,key)
+    self.tbPress = self.tbPress or {};
+    self.tbPress[key] = true;
     local actors = actors or {};
     if not next(actors) then
         return 
@@ -52,6 +56,11 @@ function WASDMoveSystem:keypressed(actors,key)
 end
 
 function WASDMoveSystem:keyreleased(actors,key)
+    if self:NumKey() > 1 then 
+        self.tbPress[key] = nil;
+       return;
+    end 
+    self.tbPress[key] = nil;
     local actors = actors or {};
     if not next(actors) then
         return 
@@ -70,4 +79,13 @@ function WASDMoveSystem:keyreleased(actors,key)
             end
         end
     end
+end
+
+function WASDMoveSystem:NumKey()
+    local index = 0;
+    self.tbPress = self.tbPress or {};
+    for i,v in pairs(self.tbPress) do 
+        index = index + 1;
+    end 
+    return index;
 end
