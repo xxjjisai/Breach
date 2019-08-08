@@ -41,6 +41,7 @@ _G.option = {
     {
         sky = 101;
         human = 201;
+        humandown = 202;
         ground = 301;
     }
 }

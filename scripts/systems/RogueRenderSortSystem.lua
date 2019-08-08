@@ -36,6 +36,9 @@ function RogueRenderSortSystem:update(dt,actors)
             if a_compo_SortOrder:GetData("nLayerIndex") == option.tbLayer.human and
             b_compo_SortOrder:GetData("nLayerIndex") == option.tbLayer.human then
                 return ay < by;
+            if a_compo_SortOrder:GetData("nLayerIndex") == option.tbLayer.humandown and
+            b_compo_SortOrder:GetData("nLayerIndex") == option.tbLayer.humandown then
+                return ay < by;
             else 
                 return a_compo_SortOrder:GetData("nLayerIndex") > b_compo_SortOrder:GetData("nLayerIndex")
             end
