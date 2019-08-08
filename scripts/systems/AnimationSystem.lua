@@ -64,6 +64,7 @@ function AnimationSystem:update(dt,actors)
 				local nStartFrame = compo_Animate.nStartFrame--self.nStartFrame or 1;
 				local nCurPlayCount = compo_Animate.nCurPlayCount;
 				local nTotalPlayCount = compo_Animate.nTotalPlayCount;
+				local fComplete = compo_Animate.fComplete or nil;
 				local nLoop = compo_Animate.nLoop;
 				local nNowTime = GetTime();
 				nTotalFrame = nEndFrame;
@@ -76,8 +77,8 @@ function AnimationSystem:update(dt,actors)
 							if compo_Animate.nCurPlayCount >= nTotalPlayCount then 
 								compo_Animate.iCurQuad = nil;
 								compo_Animate.bRunning = false;
-								if self.fComplete then 
-									self.fComplete();
+								if fComplete then 
+									fComplete();
 								end 
 								break;
 							else 
@@ -157,16 +158,14 @@ function AnimationSystem:draw(actors)
     end
 end
 
-function AnimationSystem:Play(actor,nStartFrame,nEndFrame,pfn)
+function AnimationSystem:Play(actor,nStartFrame,nEndFrame,fComplete)
 	if not actor then 
 		return;
 	end
-	self.fComplete = pfn;
-	self.nStartFrame = nStartFrame;
-	self.nEndFrame = nEndFrame;
 	local compo_Animate = actor:GetCompo("Animate");
 	compo_Animate:SetData("bRunning", true);
 	compo_Animate:SetData("nCurFrame",nStartFrame)
 	compo_Animate:SetData("nStartFrame",nStartFrame)
 	compo_Animate:SetData("nEndFrame",nEndFrame)
+	compo_Animate:SetData("fComplete",fComplete)
 end
