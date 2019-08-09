@@ -237,7 +237,6 @@ function EditorSystem:Create(act)
             ["Color"] = { color = {1,1,1,1} };
             ["Rectangle"] = { filltype = "line" };
             ["Speed"] = { speed = 200 };
-            ["SortOrder"] = { };
         } 
         local actor = actmgr:CreateActor("Actor",tbCompo);
         actor.sName = "actor";
