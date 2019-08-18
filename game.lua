@@ -148,6 +148,7 @@ end
 -- 键盘单击（重复输入）
 function Game:keypressed(key)
     if key == "escape" then  
+        --todo... 保存数据
         love.event.quit();
     end 
     if key == "r" then 

@@ -27,7 +27,6 @@ function Stage:AddSystem(system)
 end
 
 function Stage:Destory()
- 
     for _,actor in ipairs(self.actors) do 
         if actor then 
             local compo_BumpWorld = actor:GetCompo("BumpWorld");
@@ -39,10 +38,10 @@ function Stage:Destory()
                         bwsys:RemoveInWorld(actor);
                     end
                 end
-            end 
+            end
+            actor:Destory()
         end 
     end
-
     self.actors = {};
     self.systems = {};
 end

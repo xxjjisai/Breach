@@ -1,4 +1,4 @@
-_G.Scene1 = 
+_G.Scene2 = 
 {
     tbSystems = 
     {
@@ -24,7 +24,7 @@ _G.Scene1 =
     tbActors = 
     {
         --- stage --- 
-        "Stage1";
+        "Stage2";
 
         --- actor ---
         -- "Player";

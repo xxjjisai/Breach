@@ -5,7 +5,7 @@ _G.Enemy_1_4 = {
       ["tbCompo"] = {
          ["Position"] = {
             ["y"] = 192;
-            ["x"] = 128;
+            ["x"] = 428;
          };
          ["Speed"] = {
             ["speed"] = 200;

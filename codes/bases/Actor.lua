@@ -26,3 +26,10 @@ function Actor:GetCompoNameList()
     end
     self:trace(1,str)
 end
+
+function Actor:Destory()
+    for sCompo,_ in pairs(self.compos) do 
+        self:RemoveCompo(sCompo);
+    end 
+    self.compos = {};
+end

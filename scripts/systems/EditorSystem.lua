@@ -1,23 +1,24 @@
 EditorSystem = class("EditorSystem",System)
 
 EditorSystem.iCurObj = nil;
-EditorSystem.sPath = "scripts/entitys/";
+EditorSystem.sPath = "scripts/stages/";
 local time = os.date("%Y%m%d%H%M%S",os.time());
 -- EditorSystem.sFileName = "Actor_"..time;
-EditorSystem.sFileName = "Map_1";
+
+EditorSystem.sFileName = "Stage";
 EditorSystem.sState = "未保存";
 EditorSystem.nState = 0;
 EditorSystem.bAutoSave = false;
 EditorSystem.bHelp = true;
 
 -- mt_3.png 的序号
-local aaa = function ()
-    for i = 1, 100 do 
-        print(((i-1) * 3 + i),"~",((i-1) * 3 + i) - 1 + 4)
-    end
-end 
+-- local aaa = function ()
+--     for i = 1, 100 do 
+--         print(((i-1) * 3 + i),"~",((i-1) * 3 + i) - 1 + 4)
+--     end
+-- end 
 
-aaa()
+-- aaa()
 
 --[" EditorSystem 编辑器操作"] = 
 local des = [[
@@ -62,6 +63,10 @@ local help = [[
     
     状态:%s %d次
 ]]
+
+function EditorSystem:start()
+    self.sFileName = "Stage"..tostring(scemgr.active);
+end
 
 function EditorSystem:draw2()
     if self.bHelp then 
@@ -109,6 +114,9 @@ function EditorSystem:update(dt,actors)
     if not self.iCurObj then 
         return
     end
+    if self.iCurObj.sTag == "Grid" then 
+        return;
+    end 
     local compo_Position = self.iCurObj:GetCompo("Position");
     if not compo_Position then 
         return;
@@ -168,6 +176,35 @@ function EditorSystem:keypressed(actors,key)
     if key == "l" then 
         self:LastImage();
     end
+
+    if key == "m" then 
+        self:ChangeMapWalkAbled();
+    end
+end
+
+function EditorSystem:ChangeMapWalkAbled()
+    local function GetSameItem(tbDataMapInfo,x,y)
+        for i = 1,#tbDataMapInfo do 
+            local item = tbDataMapInfo[i];
+            if item.x == x and item.y == y then 
+                return item;
+            end 
+        end
+        return nil;
+    end
+    local actor = self:GetActor();
+    if not actor then return end;
+    local iMap = actmgr:GMap();
+    local iMapCompo = iMap:GetCompo("MapMaker").data;
+    local iAstarCompo = iMap:GetCompo("Astar").data;
+    local compo_Position = actor:GetCompo("Position");
+    local iNode = GetSameItem(iMapCompo.tbDataMapInfo,compo_Position:GetData("x"),compo_Position:GetData("y"));
+    if iNode.nWalkAble == 1 then 
+        iNode.nWalkAble = 0  
+    elseif iNode.nWalkAble == 0 then  
+        iNode.nWalkAble = 1
+    end 
+    self:trace(1,"iNode.nWalkAble=",iNode.nWalkAble);
 end
 
 function EditorSystem:NextImage()
@@ -259,6 +296,10 @@ function EditorSystem:Save(actors)
             if sName == "Animate" then 
                 tbActor.tbCompo[sName].tbQuad = {};
             end
+            -- if sName == "MapMaker" then 
+            --     tbActor.tbCompo[sName].tbDataMapInfo = clone(tbActor.tbCompo[sName].tbDataMapInfo);
+            --     tbActor.tbCompo[sName].tbRealMapInfo = clone(tbActor.tbCompo[sName].tbRealMapInfo);
+            -- end
         end
         table.insert(tbActorList,tbActor);        
     end
@@ -367,3 +408,17 @@ function EditorSystem:ChangeActorTag(sTag)
     self.iCurObj.sTag = sTag;
 end
 
+
+function EditorSystem:draw()
+    local iMap = actmgr:GMap();
+    local iMapCompo = iMap:GetCompo("MapMaker").data;
+    local nCellSize = iMapCompo.nCellSize;
+    local tbRealMapInfo = iMapCompo.tbRealMapInfo;
+    love.graphics.setColor(1,1,1,0.1);
+    love.graphics.setLineWidth(1);
+    for i,tbNode in ipairs(tbRealMapInfo) do 
+        if tbNode.nWalkAble == 1 then 
+            love.graphics.rectangle("fill",tbNode.x,tbNode.y,nCellSize,nCellSize)
+        end 
+    end 
+end

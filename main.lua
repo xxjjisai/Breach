@@ -2,7 +2,10 @@
 function love.load()
     love.graphics.setBackgroundColor(0, 0, 0)
 	love.graphics.clear()
-	love.graphics.present()
+    love.graphics.present()
+    
+    love.graphics.setDefaultFilter('nearest', 'nearest', 1)
+	love.graphics.setLineStyle('smooth')
 
     require('lib/utils');
     _G.loader = require('lib/love-loader');
@@ -10,6 +13,7 @@ function love.load()
     -- _G.love.profiler = require('lib/profile');
     _G.Camera = require('lib/Camera')();
     _G.Timer = require('lib/Timer')();
+    _G.Tween = require('lib/tween/tween');
     _G.bump       = require('lib/bump');
     _G.bump_debug = require('lib/bump_debug');
     require('lib/saved');
@@ -43,6 +47,10 @@ function love.load()
     for _,cls in ipairs(entitys) do 
         require("scripts/entitys/"..cls);
     end
+    local stages = include.ecs.stages;
+    for _,cls in ipairs(stages) do 
+        require("scripts/stages/"..cls);
+    end
     local systems = include.ecs.systems;
     for _,cls in ipairs(systems) do 
         require("scripts/systems/"..cls);
@@ -54,9 +62,10 @@ end
 function love.update(dt)
     Timer:update(dt)
     game:update(dt)
+    Tween:update(dt)
 end
 
-function love.draw()
+function love.draw() 
     game:draw()
 end
 

@@ -23,6 +23,10 @@
                 ["BumpWorld"] = {bInWorld=false}; -- 物理碰撞
                 ["Animate"] = {nStartFrame=1,nEndFrame=4,bStartPlay=true,sImg="mt_4",nQuadW=32,nQuadH=32,nTotalFrame=16,nLoop=1,nTotalPlayCount=0,nTimeAfterPlay=0.1};
                 ["Sprite"] = { sImg = "g1" };
+
+                --- Map ---
+                ["MapMaker"] = { tbDataMapInfo  = {}, tbRealMapInfo = {}, tbMapElement = {}, nCellSize = 32, nCellCount = 400 };
+                ["Astar"] = { tbNode = { x = 0,y = 0,g = 0,h = 0,f = 0,nID = 0, nCol = 0,nRow = 0,nCellSize = 0,tbNeighors = {},nWalkAble = 0,previous = nil } };
             }
         }
     }
@@ -41,6 +45,10 @@
         ["BumpWorld"] = {bInWorld=false}; -- 物理碰撞
         ["Animate"] = {nStartFrame=1,nEndFrame=4,bStartPlay=true,sImg="mt_4",nQuadW=32,nQuadH=32,nTotalFrame=16,nLoop=1,nTotalPlayCount=0,nTimeAfterPlay=0.1};
         ["Sprite"] = { sImg = "g1" };
+
+        --- Map ---
+        ["MapMaker"] = { tbDataMapInfo  = {}, tbRealMapInfo = {}, tbMapElement = {}, nCellSize = 32, nCellCount = 400 };
+        ["Astar"] = { tbNode = { x = 0,y = 0,g = 0,h = 0,f = 0,nID = 0, nCol = 0,nRow = 0,nCellSize = 0,tbNeighors = {},nWalkAble = 0,previous = nil } };
     }
     local actor = actmgr:CreateActor(sClassName,tbCompo);
     actmgr:AddActorInCurStage(actor);
@@ -51,8 +59,17 @@
     ["RenderRectangleSystem"] = { "Rectangle", "Position", "Size", "Color" };
     ["RogueRenderSortSystem"] = { "SortOrder", "Position", "Size" };
     ["WASDMoveSystem"] = { "WASDMove", "Position", "Direction", "Speed" };
+    ["AnimationSystem"] = { "Animate", "Position", "Size", "Color" };
+    ["SpriteSystem"] = { "Sprite", "Position", "Size", "Color" };
+    ["PlayerAnimateStateSystem"] = { "Animate" };
     ["BumpWorldSystem"] = { "BumpWorld", "Position", "Size" };
-    ["EditorSystem"] = { "所有组件" };
+    ["MapMakerSystem"] = { "MapMaker", "Astar" };
+    ["GridClickSystem"] = { "MapMaker", "Position" };
+    ["PlayerTweenMoveSystem"] = { "Position", "Size" };
+
+    --------------------- 编辑器 -----------------------
+    -- ["MakerSystem"] = { };
+    -- ["EditorSystem"] = { "所有组件" };
 ]]
 
 [" EditorSystem 编辑器操作"] = 
@@ -63,9 +80,9 @@
     ed1=sysmgr:GetSystem("EditorSystem");
 
     *** 组件 增删改查
-    ed1=sysmgr:GetSystem("EditorSystem");szCompo="Animate";ed1:AddCompo(szCompo,{nStartFrame=7,nEndFrame=8,bStartPlay=true,sImg="mt_5",nQuadW = 32,nQuadH=32,nTotalFrame=2,nLoop=1,nTotalPlayCount=0,nTimeAfterPlay=0.1});ed1:AddFlush(szCompo);
+    ed1=sysmgr:GetSystem("EditorSystem");szCompo="Position";ed1:AddCompo(szCompo,{x=320,y=127});ed1:AddFlush(szCompo);
     ed1=sysmgr:GetSystem("EditorSystem");ed1:UpdateCompo("Rectangle",{filltype = "fill"});
-    ed1=sysmgr:GetSystem("EditorSystem");szCompo="BumpWorld";ed1:RemoveCompo(szCompo);ed1:RemoveFlush(szCompo);
+    ed1=sysmgr:GetSystem("EditorSystem");szCompo="Position";ed1:RemoveCompo(szCompo);ed1:RemoveFlush(szCompo);
 
     *** 播放动画
     animatesys=sysmgr:GetSystem("AnimationSystem");ed1=sysmgr:GetSystem("EditorSystem");animatesys:SetFrame(ed1:GetActor():GetCompo("Animate"));animatesys:Play(ed1:GetActor(),21,24);

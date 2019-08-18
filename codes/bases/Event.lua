@@ -14,9 +14,9 @@ function Event:DoEvent(tbDistributor,sFuncName,...)
     for _,tbListener in pairs(tbDistributor.tbListenerList) do 
         local funcEvent = tbListener[sFuncName];
         if funcEvent ~= nil then 
-            local r,_ = pcall(funcEvent,tbListener,unpack(args));
+            local r,x = pcall(funcEvent,tbListener,unpack(args));
             if r == false then
-                return error(string.format("%s DoEvent Failed %s",r));
+                return error(string.format("%s DoEvent Failed %s",r,x));
             end
         end 
     end 

@@ -4,6 +4,7 @@ _G.include =
     scenes = 
     {
         'Scene1',
+        'Scene2',
     };
 
     -- 全局配置
@@ -47,8 +48,14 @@ _G.include =
         entitys = 
         {
             "Player";
-            "Map_1";
-            "Enemy_1_4";
+            "Map";
+        };
+
+        stages = 
+        {
+            "Stage1",
+            "Stage2",
+            "Stage3",
         };
 
         systems = 
@@ -60,8 +67,13 @@ _G.include =
             "AnimationSystem";
             "EditorSystem";
             "PlayerAnimateStateSystem";
-            "MakerSystem";
+            "G_MapMakerSystem";
             "SpriteSystem";
+            "R_MapMakerSystem";
+            "FindPathSystem";
+            "GridClickSystem";
+            "PlayerTweenMoveSystem";
+            "AstarSystem";
         }
     }
 }

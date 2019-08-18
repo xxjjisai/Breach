@@ -57,14 +57,14 @@ function CameraMgr:Follow()
     local actor = self.iFollowPlayer;
     local compo_Position = actor:GetCompo("Position")
     local compo_Size = actor:GetCompo("Size")
-    local compo_Color = actor:GetCompo("Color")
-    local compo_Rectangle = actor:GetCompo("Rectangle")
-    local x = compo_Position:GetData("x");
-    local y = compo_Position:GetData("y");
-    local w = compo_Size:GetData("x");
-    local h = compo_Size:GetData("y");
-    local tx,ty = x + w * 0.5, y + h * 0.5;
-    Camera:follow(tx,ty);
+    if compo_Position and compo_Size then
+        local x = compo_Position:GetData("x");
+        local y = compo_Position:GetData("y");
+        local w = compo_Size:GetData("x");
+        local h = compo_Size:GetData("y");
+        local tx,ty = x + w * 0.5, y + h * 0.5;
+        Camera:follow(tx,ty);
+    end
 end 
 
 function CameraMgr:Attach()

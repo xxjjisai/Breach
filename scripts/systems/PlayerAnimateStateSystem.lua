@@ -2,6 +2,7 @@ PlayerAnimateStateSystem = class("PlayerAnimateStateSystem",System)
 
 function PlayerAnimateStateSystem:start()
     Event:AddEvent(sysmgr:GetSystem("WASDMoveSystem"),self);
+    Event:AddEvent(sysmgr:GetSystem("PlayerTweenMoveSystem"),self);
 end
 
 function PlayerAnimateStateSystem:EvtPlayerWASDMove(actor,sState,nState)

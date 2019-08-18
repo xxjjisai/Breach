@@ -38,7 +38,6 @@ function SceneMgr:ResetScene()
 end
 
 function SceneMgr:DestoryScene()
-    -- DataMger:GetSceneData(self.active);
     self.scene:DestoryStage();
     self.scene = nil;
 end

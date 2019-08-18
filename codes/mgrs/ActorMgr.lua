@@ -38,6 +38,22 @@ function ActorMgr:GPA()
     end
 end
 
+function ActorMgr:GMap()
+    local scene = scemgr:GetScene();
+    if not scene then 
+        return
+    end
+    local stage = scene:GetStage();
+    if not stage then 
+        return
+    end
+    for _,actor in ipairs(stage.actors) do 
+        if actor.sTag == "Map" then 
+            return actor
+        end
+    end
+end
+
 function ActorMgr:GetActorByName(sName)
     local scene = scemgr:GetScene();
     if not scene then 
