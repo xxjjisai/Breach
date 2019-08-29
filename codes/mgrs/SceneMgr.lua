@@ -10,11 +10,10 @@ end
 
 function SceneMgr:CreateScene() 
     local scene = Scene:new();
-    self.active = self.active + 1;
     option.sState = option.tbState[1];
     assmgr:Start(option.assetsoffset + self.active,function()
-        option.sState = option.tbState[2]; 
-        cammgr:Fade(0.1, 0, 0, 0, 1,function() 
+        option.sState = option.tbState[2];
+        cammgr:Fade(0.1, 0, 0, 0, 1,function()
             scene:EnterScene();
             self.scene = scene;
             self.scene:GetStage():start();
@@ -24,8 +23,13 @@ function SceneMgr:CreateScene()
 end
 
 function SceneMgr:SwitchScene(active)
-    self.active = active;
+    self:DestoryScene();
+    self:SetSceneID(active);
     self:CreateScene();
+end
+
+function SceneMgr:SetSceneID(active)
+    self.active = active;
 end
 
 function SceneMgr:GetScene()
@@ -38,11 +42,13 @@ function SceneMgr:ResetScene()
 end
 
 function SceneMgr:DestoryScene()
+    if self.scene == nil then return end
     self.scene:DestoryStage();
     self.scene = nil;
 end
 
 function SceneMgr:Next()
     self:DestoryScene();
+    self:SetSceneID(self.active + 1);
     self:CreateScene(); 
 end

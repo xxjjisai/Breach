@@ -2,6 +2,7 @@ Game = class("Game",Class)
 
 -- 初始化
 function Game:init()
+    self.title = love.window.getTitle( );
     -- 随机数种子
     math.randomseed(os.time());
     _G.bPause  =  option.bPause  or false;-- 暂停
@@ -29,11 +30,11 @@ function Game:init()
             option.sState = option.tbState[3];
             splmgr:Start(0.5,function ()
                 option.sState = option.tbState[2]; 
-                scemgr:CreateScene();
+                scemgr:Next()
             end) 
         else 
             option.sState = option.tbState[2];
-            scemgr:CreateScene();
+            scemgr:Next()
         end
     end) 
 end
@@ -41,7 +42,7 @@ end
 -- 更新
 love.frame = 0
 function Game:update(dt)
-    love.window.setTitle( string.format("Elixir fps:%s scene:%s", tostring(love.timer.getFPS( )),scemgr.active ))
+    love.window.setTitle( string.format("%s fps:%s scene:%s",self.title,tostring(love.timer.getFPS( )),scemgr.active ))
     if bReport then 
         -- love.frame = love.frame + 1
         -- if love.frame%100 == 0 then
@@ -101,15 +102,15 @@ function Game:draw()
 
     if bReport then 
         -- love.graphics.setColor(0.41,1,0.41,0.49);
-        -- love.graphics.setFont(assmgr:GetFont(11));
+        -- love.graphics.setFont(assmgr:GetFont(1));
         -- love.graphics.print(love.report or "Please wait...",10,120);
         -- love.graphics.setColor(1,1,1,1);
     end
     if bStats then 
         love.graphics.setColor(0.41,1,0.41,0.49);
-        love.graphics.setFont(assmgr:GetFont(11));
+        love.graphics.setFont(assmgr:GetFont(2));
         local stats = love.graphics.getStats();
-        love.graphics.print("GPU memory: "..(math.floor(stats.texturememory/1.024)/1000)..
+        love.graphics.print("GPU Memory: "..(math.floor(stats.texturememory/1.024)/1000)..
         " Kb\nLua Memory: "..(math.floor(collectgarbage("count")/1.024)/1000).." Kb\nFonts: "..
         stats.fonts.."\nCanvas Switches: "..stats.canvasswitches.."\nCanvases: "..stats.canvases..
         "\nFPS: "..love.timer.getFPS(), 10, 10);

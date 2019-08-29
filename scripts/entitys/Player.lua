@@ -14,7 +14,7 @@ _G.Player =
             ["WASDMove"] = { };
             -- ["Sprite"] = { sImg = "g1" };
             ["BumpWorld"] = { bInWorld = false };
-            ["Animate"] = { nStartFrame = 1, nEndFrame = 1, bStartPlay = true, sImg = "mt_4", nQuadW = 32, nQuadH = 32, nTotalFrame= 1, nLoop = 1, nTotalPlayCount = 0, nTimeAfterPlay = 0.1 }
+            ["Animate"] = { nStartFrame = 1, nEndFrame = 1, bStartPlay = true, sImg = "mt_4", nQuadW = 32, nQuadH = 32, nTotalFrame= 1, nLoop = 1, nTotalPlayCount = 0, nTimeAfterPlay = 0.2 }
         }
     };
 }

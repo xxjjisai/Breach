@@ -3,7 +3,7 @@ _G.AssetsTextureCfg = -- 贴图
 {
     [100] =
     {    
- 
+
     }, 
     [101] =
     {    
@@ -17,6 +17,10 @@ _G.AssetsTextureCfg = -- 贴图
         {sName = "mt_2",   sPath = "assets/imgs/mt_2.png"  },
         {sName = "mt_3",   sPath = "assets/imgs/mt_3.png"  },
         {sName = "mt_4",   sPath = "assets/imgs/mt_4.png"  },
-        {sName = "mt_5",   sPath = "assets/imgs/mt_5.png"  },
+        {sName = "mt_5",   sPath = "assets/imgs/mt_5.png"  }, 
+    },
+    [102] =
+    {    
+
     },
 }

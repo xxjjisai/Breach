@@ -27,7 +27,7 @@ function AssetsMgr:Start(active,callback)
             if tbFont ~= nil then 
                 for a = 1, #tbFont do 
                     for i = 1, #tbFontSize do 
-                        iFont.sName = i..tbFont[a].sName;
+                        iFont.sName = i;
                         iFont.sPath = tbFont[a].sPath;
                         iFont.nSize = tbFontSize[i];
                         self:trace(1,"Font:",iFont.sName)

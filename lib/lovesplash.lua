@@ -78,7 +78,7 @@ function lovesplash.draw()
 			windows.h/2-splash.image:getHeight()/2
 		)
 		--and the footer text
-		local font = assmgr:GetFont(22);
+		local font = assmgr:GetFont(2);
 		love.graphics.setFont(font);
 		love.graphics.printf(splash.footer, 0,windows.h-40,windows.w,"center")
 	end

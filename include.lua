@@ -49,31 +49,34 @@ _G.include =
         {
             "Player";
             "Map";
+            "Enemy";
+            "Title";
         };
 
         stages = 
         {
             "Stage1",
-            "Stage2",
-            "Stage3",
         };
 
         systems = 
         {
-            "RenderRectangleSystem";
-            "RogueRenderSortSystem";
-            "WASDMoveSystem";
-            "BumpWorldSystem";
-            "AnimationSystem";
-            "EditorSystem";
-            "PlayerAnimateStateSystem";
-            "G_MapMakerSystem";
-            "SpriteSystem";
-            "R_MapMakerSystem";
-            "FindPathSystem";
-            "GridClickSystem";
-            "PlayerTweenMoveSystem";
-            "AstarSystem";
+            "A_RenderRectangleSystem";
+            "A_RogueRenderSortSystem";
+            "A_WASDMoveSystem";
+            "A_BumpWorldSystem";
+            "A_AnimationSystem";
+            "A_EditorSystem";
+            "A_PlayerAnimateStateSystem";
+            "A_G_MapMakerSystem";
+            "A_SpriteSystem";
+            "A_R_MapMakerSystem";
+            "A_FindPathSystem";
+            "A_GridClickSystem";
+            "A_PlayerTweenMoveSystem";
+            "A_AstarSystem";
+            "A_ActivateSystem";
+            "B_DialogSystem";
+            "B_WelcomSystem";
         }
     }
 }

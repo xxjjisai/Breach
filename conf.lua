@@ -11,7 +11,7 @@ function love.conf(t)
  
     t.audio.mixwithsystem = true        -- Keep background music playing when opening LOVE (boolean, iOS and Android only)
  
-    t.window.title = "Elixir"         -- The window title (string)
+    t.window.title = "余生-共老 [Purge_v0.0.1] "         -- The window title (string)
     t.window.icon = "assets/imgs/icon.PNG"           -- Filepath to an image to use as the window's icon (string)
     t.window.width = 960                -- The window width (number)
     t.window.height = 640               -- The window height (number)

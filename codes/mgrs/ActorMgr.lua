@@ -108,7 +108,7 @@ function ActorMgr:RemoveActor(id)
             if compo_BumpWorld then 
                 if compo_BumpWorld:GetData("bInWorld") then 
                     -- 从世界中移除
-                    local bwsys = sysmgr:GetSystem("BumpWorldSystem");
+                    local bwsys = sysmgr:GetSystem("A_BumpWorldSystem");
                     if bwsys then  
                         bwsys:RemoveInWorld(act);
                     end

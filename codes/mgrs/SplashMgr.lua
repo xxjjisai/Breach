@@ -29,8 +29,8 @@ function SplashMgr:Start(speed,pfn)
 			{		
 				image = love.graphics.newImage("assets/imgs/images/love-app-icon.png"),
 				-- footer = "Powered by LÖVE framework",
-				-- footer = "由 LÖVE 框架提供支持",
-				footer = "",
+				footer = "由LÖVE框架提供支持",
+				-- footer = "",
 				speed = self.speed,
 				duration = 2,
 			},

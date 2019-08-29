@@ -7,20 +7,27 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest', 1)
 	love.graphics.setLineStyle('smooth')
 
-    require('lib/utils');
-    _G.loader = require('lib/love-loader');
-    _G.splash = require('lib/lovesplash');
-    -- _G.love.profiler = require('lib/profile');
-    _G.Camera = require('lib/Camera')();
-    _G.Timer = require('lib/Timer')();
-    _G.Tween = require('lib/tween/tween');
-    _G.bump       = require('lib/bump');
-    _G.bump_debug = require('lib/bump_debug');
-    require('lib/saved');
-    require('lib/functions');
-    _G.class = require('lib/middleclass');
     require("option");
     require("include");
+    
+    _G.loader     = require('lib/love-loader');
+    _G.splash     = require('lib/lovesplash');
+    _G.Camera     = require('lib/Camera')();
+    _G.Timer      = require('lib/Timer')();
+    _G.Tween      = require('lib/tween/tween');
+    _G.bump       = require('lib/bump');
+    _G.bump_debug = require('lib/bump_debug');
+    _G.class      = require('lib/middleclass');
+
+    local libs = 
+    {
+        'utils',
+        'saved',
+        'functions',
+    }
+    for _,cfg in ipairs(libs) do
+        require('lib/'..cfg);
+    end 
     local scenescfg = include.scenes;
     for _,cfg in ipairs(scenescfg) do 
         require("configs/scenes/"..cfg);
@@ -41,7 +48,6 @@ function love.load()
     for _,cls in ipairs(mgrs) do 
         require("codes/mgrs/"..cls);
     end
-    -- ecs scripts
     local ecs = include.ecs;
     local entitys = include.ecs.entitys;
     for _,cls in ipairs(entitys) do 
