@@ -58,6 +58,7 @@
 
 ["每个系统需要的组件"] = 
 [[
+    --- A ---
     ["A_RenderRectangleSystem"] = { "Rectangle", "Position", "Size", "Color" };
     ["A_RogueRenderSortSystem"] = { "SortOrder", "Position", "Size" };
     ["A_WASDMoveSystem"] = { "WASDMove", "Position", "Direction", "Speed" };
@@ -68,10 +69,15 @@
     ["MapMakerSystem"] = { "MapMaker", "Astar" };
     ["A_GridClickSystem"] = { "MapMaker", "Position" };
     ["A_PlayerTweenMoveSystem"] = { "Position", "Size" };
-
+    ["A_ActivateSystem"] = { "Activate","Position" };
     --------------------- 编辑器 -----------------------
-    -- ["MakerSystem"] = { };
-    -- ["A_EditorSystem"] = { "所有组件" };
+    ["A_G_MapMakerSystem"] = { "MapMaker", "Astar" }; -- 矩形生成地图，两种生成器需要二选一
+    ["A_R_MapMakerSystem"] = { "MapMaker", "Astar" }; -- 醉汉行步生成地图，两种生成器需要二选一
+    ["A_EditorSystem"] = { "所有组件" };
+    --- B ---
+    ["B_DialogSystem"] = { "Activate","Position" };
+    ["B_WelcomSystem"] = { "Title","Position" };
+
 ]]
 
 [" A_EditorSystem 编辑器操作"] = 

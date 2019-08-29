@@ -45,7 +45,7 @@ _G.include =
 
     ecs =
     {
-        entitys = 
+        actors = 
         {
             "Player";
             "Map";

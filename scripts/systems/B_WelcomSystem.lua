@@ -1,5 +1,9 @@
 B_WelcomSystem = class("B_WelcomSystem",System)
  
+function B_WelcomSystem:start(actors)
+    cammgr:RestCameraToOrigin();
+end
+
 function B_WelcomSystem:draw(actors)
     local actors = actors or {};
     if not next(actors) then

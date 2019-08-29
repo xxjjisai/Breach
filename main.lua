@@ -49,9 +49,9 @@ function love.load()
         require("codes/mgrs/"..cls);
     end
     local ecs = include.ecs;
-    local entitys = include.ecs.entitys;
-    for _,cls in ipairs(entitys) do 
-        require("scripts/entitys/"..cls);
+    local actors = include.ecs.actors;
+    for _,cls in ipairs(actors) do 
+        require("scripts/actors/"..cls);
     end
     local stages = include.ecs.stages;
     for _,cls in ipairs(stages) do 
