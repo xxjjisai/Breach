@@ -16,9 +16,9 @@ function B_WelcomSystem:draw(actors)
             local color = compo_Color:GetData("color");
             local sTitle = compo_Title:GetData("sTitle");
             love.graphics.setColor(unpack(color)); 
-            love.graphics.setFont(assmgr:GetFont(5));
-            love.graphics.print(sTitle, (windows.w*0.5) - assmgr:GetFont(5):getWidth(sTitle)*0.5,
-            (windows.h*0.5) - assmgr:GetFont(5):getHeight(sTitle)*0.5);
+            love.graphics.setFont(assmgr:GetFont(6));
+            love.graphics.print(sTitle, (windows.w*0.5) - assmgr:GetFont(6):getWidth(sTitle)*0.5,
+            (windows.h*0.5) - assmgr:GetFont(6):getHeight(sTitle)*0.5);
             love.graphics.setFont(assmgr:GetFont(1));
             local sVestion="0.0.1"
             love.graphics.print(sVestion, 10, windows.h - assmgr:GetFont(2):getWidth(sVestion) * 0.5);

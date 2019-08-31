@@ -122,11 +122,11 @@ end
 
 -- 鼠标单击
 function Game:mousepressed(x,y,button)
-    if button == 2 then 
-        if option.sState == option.tbState[2] then 
-            scemgr:Next();
-        end
-    end
+    -- if button == 2 then 
+    --     if option.sState == option.tbState[2] then 
+    --         scemgr:Next();
+    --     end
+    -- end
     if option.sState == option.tbState[2] then 
         local scene = scemgr:GetScene();
         if scene then 

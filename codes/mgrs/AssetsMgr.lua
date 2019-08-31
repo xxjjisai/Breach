@@ -23,7 +23,7 @@ function AssetsMgr:Start(active,callback)
             self:trace(1,"Not Find Font");
         else
             local iFont = {};
-            local tbFontSize = { 22, 24, 32, 36, 72 };
+            local tbFontSize = { 22, 24, 32, 36, 72, 92 };
             if tbFont ~= nil then 
                 for a = 1, #tbFont do 
                     for i = 1, #tbFontSize do 
